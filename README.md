@@ -1,16 +1,27 @@
-# travel_app_gdgoc_uh
+# Travel_app_gdgoc_uh
 
-A new Flutter project.
+This project is for teaching materials GDGoC UNHAS
 
-## Getting Started
+## What we have learned:
+- Scaffold
+- AppBar
+- Stack
+- SizedBox
+- Spacer
+- Row
+- Column
 
-This project is a starting point for a Flutter application.
+# Progress
+1. 1st Meeting:
+2. 2nd Meeting
+3. 3rd Meeting
+4. 4th Meeting
+5. 5th Meeting
 
-A few resources to get you started if this is your first Flutter project:
+# How to Run this project
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Clone this repo 
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  `git clone https://github.com/AryaGoberto/travel_app_gdgoc_uh.git`
+- Open terminal and type `flutter run` and then choose where to run
+
