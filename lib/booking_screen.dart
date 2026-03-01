@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:travel_app_gdgoc_uh/model/data.dart';
 
 class BookingScreen extends StatefulWidget {
-  const BookingScreen({super.key});
+  final Wisata wisata;
+  const BookingScreen({required this.wisata, super.key});
 
   @override
   State<BookingScreen> createState() => _BookingScreenState();
@@ -12,6 +14,7 @@ class _BookingScreenState extends State<BookingScreen> {
   String seletedPackage = 'Reguler';
   int? selectedPeople;
   bool includeGuide = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +34,7 @@ class _BookingScreenState extends State<BookingScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Pantai Losari",
+                        widget.wisata.nama,
                         style: TextStyle(
                           fontSize: 26,
                           fontWeight: FontWeight.bold,
@@ -46,7 +49,7 @@ class _BookingScreenState extends State<BookingScreen> {
                             size: 18,
                           ),
                           Text(
-                            "Makassar, Indonesia",
+                            widget.wisata.lokasi,
                             style: TextStyle(color: Colors.grey[600]),
                           ),
                         ],
@@ -61,7 +64,7 @@ class _BookingScreenState extends State<BookingScreen> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     image: DecorationImage(
-                      image: AssetImage("assets/images/pantai_losari.jpg"),
+                      image: AssetImage(widget.wisata.imageUtama),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -76,7 +79,7 @@ class _BookingScreenState extends State<BookingScreen> {
               ),
               elevation: 2,
               child: Padding(
-                padding: EdgeInsetsGeometry.all(20),
+                padding: EdgeInsets.all(20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -107,7 +110,6 @@ class _BookingScreenState extends State<BookingScreen> {
                         focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.blue),
                         ),
-                    
                       ),
                     ),
 
@@ -125,8 +127,8 @@ class _BookingScreenState extends State<BookingScreen> {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.blue)
-                        )
+                          borderSide: BorderSide(color: Colors.blue),
+                        ),
                       ),
                     ),
 
@@ -169,7 +171,7 @@ class _BookingScreenState extends State<BookingScreen> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsGeometry.all(10),
+                      padding: EdgeInsets.all(10),
                       child: Column(
                         children: [
                           RadioListTile(

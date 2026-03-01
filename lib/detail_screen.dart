@@ -1,20 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app_gdgoc_uh/booking_screen.dart';
+import 'model/data.dart';
 
 class DetailScreen extends StatelessWidget {
-  const DetailScreen({super.key});
+  final Wisata wisata;
+  const DetailScreen({required this.wisata, super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          leading: IconButton(onPressed: () {}, icon: Icon(Icons.arrow_back)),
-          title: Text(
-            "Destinasi Wisata",
-            style: TextStyle(color: Colors.black),
-          ),
-          backgroundColor: Colors.white,
+      appBar: AppBar(
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: Icon(Icons.arrow_back),
         ),
-        body: Padding(
+        title: Text(wisata.nama, style: TextStyle(color: Colors.black)),
+        backgroundColor: Colors.white,
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
           padding: EdgeInsets.all(24),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -27,7 +31,7 @@ class DetailScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16),
                       image: DecorationImage(
-                        image: AssetImage("assets/images/pantai_losari.jpg"),
+                        image: AssetImage(wisata.imageUtama),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -55,11 +59,11 @@ class DetailScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Pantai Losari",
-                    style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                    wisata.nama,
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    "Rp 250k",
+                    wisata.harga,
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -77,7 +81,7 @@ class DetailScreen extends StatelessWidget {
                   Icon(Icons.location_on, color: Colors.black),
                   SizedBox(width: 4),
                   Text(
-                    "Makassar, Indonesia",
+                    wisata.lokasi,
                     style: TextStyle(color: Colors.grey[600]),
                   ),
                 ],
@@ -90,120 +94,99 @@ class DetailScreen extends StatelessWidget {
                 children: [
                   Icon(Icons.star, color: Colors.orange),
                   SizedBox(width: 4),
-                  Text("4.8", style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text(
+                    "${wisata.rating}",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                   SizedBox(width: 6),
-                  Text("(1.2k reviews)", style: TextStyle(color: Colors.grey)),
+                  Text(
+                    "(${wisata.reviews} reviews)",
+                    style: TextStyle(color: Colors.grey),
+                  ),
                 ],
               ),
 
               SizedBox(height: 16),
 
               // ===== INFO ROW =====
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(
-                    children: [
-                      Icon(Icons.access_time, color: Colors.blue),
-                      SizedBox(height: 4),
-                      Text("24 Jam"),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Icon(Icons.smoking_rooms, color: Colors.blue),
-                      SizedBox(height: 4),
-                      Text("Smoking Room"),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Icon(Icons.local_parking, color: Colors.blue),
-                      SizedBox(height: 4),
-                      Text("Parking Lot"),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Icon(Icons.family_restroom_rounded, color: Colors.blue),
-                      SizedBox(height: 4),
-                      Text("Toilet"),
-                    ],
-                  ),
-                ],
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: wisata.fasilitas.map((fasilitas) {
+                    return Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 8),
+                      child: Column(
+                        children: [
+                          Icon(fasilitas.icon, color: Colors.blue),
+                          SizedBox(height: 4),
+                          Text(fasilitas.label),
+                        ],
+                      ),
+                    );
+                  }).toList(),
+                ),
               ),
 
               SizedBox(height: 16),
               // ===== DESCRIPTION =====
-              Text(
-                "Pantai Losari adalah ikon wisata Kota Makassar yang terkenal sebagai tempat terbaik untuk menikmati sunset. Area ini memiliki pelataran luas yang nyaman untuk berjalan santai dan menikmati kuliner khas seperti Pisang Epe.",
-                style: TextStyle(height: 1.5),
-              ),
+              Text(wisata.deskripsi, style: TextStyle(height: 1.5)),
               SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    height: 100,
-                    width: 100,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      image: DecorationImage(
-                        image: AssetImage("assets/images/panlos1.jpg"),
-                        fit: BoxFit.cover,
+              SizedBox(
+                height: 100,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: wisata.galeri.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: EdgeInsets.only(right: 12),
+                      child: Container(
+                        width: 100,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          image: DecorationImage(
+                            image: AssetImage(wisata.galeri[index]),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                  Container(
-                    height: 100,
-                    width: 100,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      image: DecorationImage(
-                        image: AssetImage("assets/images/panlos2.jpg"),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-
-                  Container(
-                    height: 100,
-                    width: 100,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      image: DecorationImage(
-                        image: AssetImage("assets/images/panlos3.jpg"),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                ],
+                    );
+                  },
+                ),
               ),
 
-              Spacer(),
+              SizedBox(height: 24),
 
               // ===== BOOK BUTTON =====
-              Container(
-                width: double.infinity,
-                height: 55,
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(12),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue,
+                  minimumSize: Size(double.infinity, 55),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
                 ),
-                child: Center(
-                  child: Text(
-                    "Book Now",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => BookingScreen(wisata: wisata),
                     ),
+                  );
+                },
+                child: Text(
+                  "Book Now",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
             ],
           ),
         ),
-      );
+      ),
+    );
   }
 }

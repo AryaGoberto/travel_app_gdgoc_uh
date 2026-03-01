@@ -2,7 +2,7 @@ name: travel_app_gdgoc_uh
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -51,7 +51,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -59,10 +58,26 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/pantai_losari.jpg
-    - assets/images/panlos1.jpg
-    - assets/images/panlos2.jpg
-    - assets/images/panlos3.jpg
+    - assets/images/pantai_losari/pantai_losari.jpg
+    - assets/images/pantai_losari/panlos1.jpg
+    - assets/images/pantai_losari/panlos2.jpg
+    - assets/images/pantai_losari/panlos3.jpg
+    - assets/images/candi_borobudur/candi_borobudur_1.jpg
+    - assets/images/candi_borobudur/candi_borobudur_2.jpg
+    - assets/images/candi_borobudur/candi_borobudur_3.jpg
+    - assets/images/candi_borobudur/candi_borobudur_4.jpg
+    - assets/images/gunung_bromo/gunung_bromo_1.jpg
+    - assets/images/gunung_bromo/gunung_bromo_2.jpg
+    - assets/images/gunung_bromo/gunung_bromo_3.jpg
+    - assets/images/gunung_bromo/gunung_bromo_4.jpg
+    - assets/images/labuan_bajo/labuanbajo_1.jpg
+    - assets/images/labuan_bajo/labuanbajo_2.jpg
+    - assets/images/labuan_bajo/labuanbajo_3.jpg
+    - assets/images/labuan_bajo/labuanbajo_4.jpg
+    - assets/images/toraja/toraja_1.jpg
+    - assets/images/toraja/toraja_2.jpg
+    - assets/images/toraja/toraja_3.jpg
+    - assets/images/toraja/toraja_4.jpg
 
   fonts:
     - family: Poppins
